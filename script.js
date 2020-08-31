@@ -1,3 +1,5 @@
+'use strict';
+
 const numberOfFilms = +prompt('скільки фільмів ви вже переглянули', '');
 
 const personalMovieDB = {
@@ -8,22 +10,26 @@ const personalMovieDB = {
      private: false
 };
 
-/* const a = prompt('Один із переглянутих фільмів', ''),
-      b = prompt('на скільки ви його оціните', ''),
-      c = prompt('Один із переглянутих фільмів', ''),
-      d = prompt('на скільки ви його оціните', '');
- */
-
 for (let i = 0; i < 2; i++) {
-     const a = prompt('Один из последних просмотренных фильмов?', ''),
-           b = prompt('На сколько оцените его?', '');
- 
-     if (a != null && b != null && a != '' && b != '' && a.length < 50) {
-         personalMovieDB.movies[a] = b;
-         console.log('done');
+     const a = prompt('Один із переглянутих фільмів?', ''),
+           b = prompt('на скільки ви його оціните?', '');
+
+     if(a != null && b != null && a != '' && b != '' && a.length < 50) {
+          personalMovieDB.movies[a] = b;
+          console.log('done');
      } else {
-         console.log('error');
-         i--;
+          i--;
      }
  }
- 
+
+if (personalMovieDB.count < 10) {
+     console.log('Переглянуто досить мало фільмів');
+} else if (personalMovieDB.count >= 10 && personalMovieDB.count < 30) {
+     console.log('Ви класний глядач');
+} else if(personalMovieDB.count >=30) {
+     console.log('Ви кіноман');
+} else {
+     console.log('Виникла помилка');
+}
+
+ console.log(personalMovieDB);
